@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lights Out · rando</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=JetBrains+Mono:wght@400;600&family=Permanent+Marker&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- the room: everything here is only visible in the torch beam -->
+  <div class="room">
+    <div class="graffiti" style="left: 8%; top: 12%;">who turned off<br />the lights?</div>
+
+    <div class="frame" style="left: 62%; top: 10%;">
+      <div class="painting"><span class="sun"></span><span class="hill a"></span><span class="hill b"></span></div>
+      <small>"Landscape, probably" — unknown</small>
+    </div>
+
+    <div class="note" style="left: 30%; top: 46%; --tilt: -4deg;">the light switch<br />is somewhere on<br />this wall. good luck.</div>
+    <div class="note yellow" style="left: 74%; top: 58%; --tilt: 6deg;">don't look<br />behind you</div>
+    <div class="note" style="left: 12%; top: 66%; --tilt: 3deg;">torch dying?<br /><b>shake it.</b></div>
+
+    <div class="clock" style="left: 44%; top: 14%;"><span id="clock">--:--</span><small>it's later than you think</small></div>
+
+    <div class="door" style="left: 86%; top: 22%;"><span class="knob"></span><span class="sign">EXIT</span></div>
+
+    <div class="tally" style="left: 52%; top: 76%;">𝍸𝍸𝍸 𝍸𝍸 ||| days in the dark</div>
+
+    <div class="tiny" style="left: 3%; top: 92%;">you weren't supposed to find this</div>
+
+    <svg class="web" style="left: 0; top: 0;" viewBox="0 0 200 200" aria-hidden="true">
+      <g fill="none" stroke="#cfcfcf" stroke-width="0.8" opacity="0.6">
+        <path d="M0 0 L200 40 M0 0 L160 120 M0 0 L90 190 M0 0 L30 200" />
+        <path d="M40 8 Q36 26 32 24 Q24 34 12 38" />
+        <path d="M90 18 Q78 54 64 52 Q48 76 26 84" />
+        <path d="M140 28 Q120 82 98 80 Q74 116 42 130" />
+      </g>
+    </svg>
+
+    <button class="switch" id="switch" aria-label="light switch" style="left: 67%; top: 40%;"><span></span></button>
+  </div>
+
+  <div class="dark" aria-hidden="true"></div>
+  <div class="beam" aria-hidden="true"></div>
+  <canvas id="dust" aria-hidden="true"></canvas>
+  <div id="eyes" aria-hidden="true"></div>
+
+  <div class="hud">
+    <a href="../../" class="back">← rando</a>
+    <div class="battery" title="battery"><span id="charge"></span></div>
+  </div>
+  <p class="hint" id="hint">move to look around · scroll to focus the beam · click to switch it off · shake to recharge</p>
+  <p class="toast" id="toast"></p>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>

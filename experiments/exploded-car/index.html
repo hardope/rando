@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GT-0, Exploded · rando</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="scene"></canvas>
+  <div id="labels" aria-hidden="true"></div>
+  <div class="loader" id="loader">assembling…</div>
+
+  <header class="topbar">
+    <a href="../../" class="back">← rando</a>
+    <span class="brand">GT-0 <em>exploded</em></span>
+  </header>
+  <div class="progress"><span id="bar"></span></div>
+  <nav class="dots" id="dots"></nav>
+
+  <main>
+    <section class="hero">
+      <div class="card">
+        <p class="kicker">rando motors · model GT-0</p>
+        <h1>Every car is<br />a puzzle.</h1>
+        <p>Built entirely from code: no model files, no textures. Scroll to take it apart. Drag anywhere to spin it. Click any part to inspect it on its own.</p>
+        <p class="scroll-cue">scroll ↓</p>
+      </div>
+    </section>
+
+    <section class="right">
+      <div class="card">
+        <p class="kicker">01 · profile</p>
+        <h2>One line, nose to tail.</h2>
+        <p>The whole body is a single extruded side profile: a few curves, two wheel arches, then pulled sideways into 3D with a soft bevel.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <p class="kicker">02 · exploded</p>
+        <h2>Now pull it apart.</h2>
+        <p>Every part knows where it lives and where it goes when the car comes apart. Your scroll position just moves them between the two.</p>
+      </div>
+    </section>
+
+    <section class="right">
+      <div class="card">
+        <p class="kicker">03 · corners</p>
+        <h2>Wheels &amp; brakes.</h2>
+        <p>Five-spoke wheels slide off their hubs, spinning as they go, and show the discs and yellow calipers behind them.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <p class="kicker">04 · heart</p>
+        <h2>The V8 that isn't.</h2>
+        <p>A block, two tilted heads, a plenum and eight runners. It doesn't run, but it would look great on a poster.</p>
+      </div>
+    </section>
+
+    <section class="right">
+      <div class="card">
+        <p class="kicker">05 · cockpit</p>
+        <h2>Look inside.</h2>
+        <p>The tub is open to the sky: two bolstered buckets, a wheel, a glowing dash and a gear knob. There's no cupholder.</p>
+      </div>
+    </section>
+
+    <section class="finale">
+      <div class="card">
+        <p class="kicker">06 · yours</p>
+        <h2>Put it back together.</h2>
+        <p>Pick a paint. Drag to spin it around.</p>
+        <div class="swatches" id="swatches"></div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>

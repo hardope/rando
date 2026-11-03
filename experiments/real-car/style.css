@@ -1,0 +1,9 @@
+/* 458 overrides on top of the shared GT-0 styles */
+:root { --accent: #ffd400; }
+h1 { font-size: clamp(38px, 5vw, 64px); }
+.label::before { box-shadow: 0 0 0 4px #ffd40033; }
+.options { margin-top: 14px; }
+.options p { font-family: var(--mono); font-size: 11px; color: var(--dim) !important; text-transform: uppercase; letter-spacing: 0.08em; margin: 14px 0 0 !important; }
+.options .swatches { margin-top: 8px; }
+.credit { position: fixed; z-index: 5; left: clamp(16px, 6vw, 96px); bottom: 14px; font-family: var(--mono); font-size: 10px; color: #6a6964; }
+.credit a { color: inherit; }

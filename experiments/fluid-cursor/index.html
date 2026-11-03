@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fluid Cursor · rando</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    html, body { margin: 0; height: 100%; overflow: hidden; background: #000; touch-action: none; }
+    canvas { position: fixed; inset: 0; width: 100vw; height: 100vh; display: block; }
+    .word {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      margin: 0;
+      font: 700 clamp(90px, 26vw, 360px) / 1 'Space Grotesk', system-ui, sans-serif;
+      letter-spacing: -0.06em;
+      color: #fff;
+      mix-blend-mode: difference;
+      pointer-events: none;
+      user-select: none;
+    }
+    .back, .hint, .msg {
+      position: fixed;
+      z-index: 2;
+      font: 12px 'JetBrains Mono', ui-monospace, monospace;
+      color: #8a8a8a;
+    }
+    .back { top: 16px; left: 16px; text-decoration: none; }
+    .back:hover { color: #fff; }
+    .hint { bottom: 16px; left: 50%; transform: translateX(-50%); width: max-content; max-width: calc(100vw - 32px); text-align: center; pointer-events: none; }
+    .msg { inset: 0; display: none; place-items: center; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <canvas id="fluid"></canvas>
+  <h1 class="word">stir.</h1>
+  <a class="back" href="../../">← rando</a>
+  <p class="hint">move to stir · click to splash · space to freeze the colour · c to clear</p>
+  <p class="msg" id="msg">this one needs WebGL2 with float textures, and your browser said no.</p>
+  <script type="module" src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Page Gravity · rando</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- A painfully generic landing page. Everything with class="drop" becomes a physics body. -->
+  <nav class="nav">
+    <span class="drop logo">◆ Synergize</span>
+    <span class="links">
+      <a class="drop" href="#">Product</a>
+      <a class="drop" href="#">Solutions</a>
+      <a class="drop" href="#">Pricing</a>
+      <a class="drop" href="#">Blog</a>
+    </span>
+    <a class="drop btn small" href="#">Book a demo</a>
+  </nav>
+
+  <header class="hero">
+    <span class="drop pill">✨ Now with AI</span>
+    <h1 class="drop">Synergy, at scale.</h1>
+    <p class="drop lede">The enterprise-grade platform that leverages next-gen paradigms to empower your stakeholders and unlock holistic, best-in-class outcomes.</p>
+    <div class="ctas">
+      <button class="drop btn danger" id="drop">Don’t press this</button>
+      <a class="drop btn ghost" href="#">Learn more →</a>
+    </div>
+  </header>
+
+  <section class="logos">
+    <span class="drop">ACME</span>
+    <span class="drop">Globex</span>
+    <span class="drop">Initech</span>
+    <span class="drop">Hooli</span>
+    <span class="drop">Vandelay</span>
+  </section>
+
+  <section class="features">
+    <article class="drop card"><b>⚡ Leverage</b><p>Leverage your leverage with our leverage engine.</p></article>
+    <article class="drop card"><b>🚀 Disrupt</b><p>Disrupt the disruptors before they disrupt you.</p></article>
+    <article class="drop card"><b>🔁 Pivot</b><p>Pivot seamlessly, as often as your board demands.</p></article>
+  </section>
+
+  <section class="quote">
+    <blockquote class="drop">“We tripled our synergy in one quarter. I still don’t know what it is.”<cite>— a VP somewhere</cite></blockquote>
+  </section>
+
+  <footer class="footer">
+    <span class="drop">© 2026 Synergize Inc.</span>
+    <a class="drop" href="#">Privacy</a>
+    <a class="drop" href="#">Terms</a>
+  </footer>
+
+  <!-- controls, shown once things fall -->
+  <div class="hud" id="hud">
+    <a href="../../">← rando</a>
+    <span>drag to throw · arrow keys tilt gravity · space for zero-g</span>
+    <button id="restore">put it back</button>
+  </div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>

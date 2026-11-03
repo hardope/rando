@@ -1,0 +1,188 @@
+:root {
+  --bg: #0b0b0d;
+  --fg: #ecebe6;
+  --dim: #8a8983;
+  --line: #24242a;
+  --card: #121216;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --sans: 'Space Grotesk', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, #1d1b2e 0%, transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, #1b2620 0%, transparent 60%),
+    var(--bg);
+  color: var(--fg);
+  font-family: var(--sans);
+  padding: clamp(24px, 5vw, 72px) clamp(16px, 5vw, 72px);
+}
+
+/* faint grid */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at 50% 0%, #000 0%, transparent 70%);
+  opacity: 0.5;
+}
+
+.masthead { position: relative; margin-bottom: clamp(32px, 6vw, 72px); }
+
+h1 {
+  font-size: clamp(72px, 16vw, 200px);
+  line-height: 0.85;
+  margin: 0 0 20px;
+  letter-spacing: -0.06em;
+  font-weight: 700;
+  cursor: default;
+}
+
+.tagline {
+  font-family: var(--mono);
+  color: var(--dim);
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  color: inherit;
+  text-decoration: none;
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+.card:hover { border-color: #3a3a44; }
+
+.preview {
+  position: relative;
+  height: 210px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+}
+
+.meta { padding: 18px 20px 20px; }
+.num { font-family: var(--mono); font-size: 12px; color: var(--dim); }
+.card h2 { margin: 6px 0 8px; font-size: 24px; letter-spacing: -0.02em; }
+.card p { margin: 0 0 14px; color: #b5b4ae; line-height: 1.5; font-size: 15px; }
+.tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.tags span {
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 3px 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--dim);
+}
+
+/* --- previews --- */
+
+/* torch: a light follows the mouse inside the card */
+.pv-torch {
+  background:
+    repeating-linear-gradient(0deg, transparent 0 22px, #00000055 22px 24px),
+    repeating-linear-gradient(90deg, transparent 0 46px, #00000055 46px 48px),
+    #6b3b2a;
+}
+.pv-torch::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--px, 50%) var(--py, 50%), transparent 0, transparent 30px, rgba(0,0,0,.9) 80px, #000 120px);
+}
+.pv-torch .eyes {
+  position: absolute;
+  z-index: 2;
+  right: 18%;
+  top: 30%;
+  display: flex;
+  gap: 8px;
+  animation: blink 4s infinite;
+}
+.pv-torch .eyes i {
+  width: 9px; height: 6px; border-radius: 50%;
+  background: #e7ff7a;
+  box-shadow: 0 0 10px #d2ff3c;
+}
+@keyframes blink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(0.1); } }
+
+/* shot: real renders of the experiment; the second image fades in on hover */
+.pv-shot { background: #0c0c0f; }
+.pv-shot img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  transition: opacity 0.6s ease, transform 1.2s cubic-bezier(.2,.8,.2,1);
+}
+.pv-shot img:nth-child(2) { opacity: 0; transform: scale(1.06); }
+.card:hover .pv-shot img:first-child { opacity: 0; transform: scale(1.06); }
+.card:hover .pv-shot img:nth-child(2) { opacity: 1; transform: scale(1); }
+
+/* fluid: blurry blobs, a word that inverts them */
+.pv-fluid { background: #000; }
+.pv-fluid i { position: absolute; width: 140px; height: 140px; border-radius: 50%; filter: blur(28px); animation: drift 6s ease-in-out infinite alternate; }
+.pv-fluid i:nth-child(1) { background: #ff2bd6; left: 10%; top: 10%; }
+.pv-fluid i:nth-child(2) { background: #00e5ff; left: 45%; top: 35%; animation-delay: -2s; }
+.pv-fluid i:nth-child(3) { background: #ffd400; left: 65%; top: 0; animation-delay: -4s; }
+.pv-fluid b { position: absolute; inset: 0; display: grid; place-items: center; font-size: 76px; letter-spacing: -0.06em; color: #fff; mix-blend-mode: difference; }
+@keyframes drift { to { transform: translate(40px, 30px) scale(1.3); } }
+
+/* gravity: a little pile of fallen UI */
+.pv-gravity { background: #f7f6f2; }
+.pv-gravity span { position: absolute; padding: 6px 12px; border-radius: 8px; background: #fff; color: #14141a; font-weight: 700; box-shadow: 0 4px 12px #0002; transition: transform 0.5s cubic-bezier(.2,.8,.2,1); }
+.pv-gravity span:nth-child(1) { left: 14%; bottom: 10px; font-size: 26px; transform: rotate(-4deg); }
+.pv-gravity span:nth-child(2) { left: 56%; bottom: 8px; transform: rotate(9deg); }
+.pv-gravity span:nth-child(3) { left: 50%; bottom: 46px; background: #14141a; color: #fff; transform: rotate(-14deg); }
+.pv-gravity span:nth-child(4) { left: 28%; bottom: 62px; background: #ebe8ff; color: #4b3fd6; transform: rotate(18deg); }
+.pv-gravity span:nth-child(5) { left: 74%; bottom: 44px; transform: rotate(-30deg); }
+.card:hover .pv-gravity span { transform: translateY(-110px) rotate(0deg); }
+.card:hover .pv-gravity span:nth-child(odd) { transition-delay: 0.05s; }
+
+/* fallback for experiments without a custom preview */
+.pv-default {
+  background: conic-gradient(from var(--a, 0deg), #ff4a3d, #ffb000, #46e3a6, #7fb6ff, #c77dff, #ff4a3d);
+  filter: saturate(0.8) blur(30px);
+  animation: spin 8s linear infinite;
+}
+@property --a { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+@keyframes spin { to { --a: 360deg; } }
+
+.foot {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 48px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--dim);
+}
+code { color: var(--fg); }
+
+@media (prefers-reduced-motion: reduce) {
+  .card, .pv-shot img { transition: none; }
+  .pv-default { animation: none; }
+}
